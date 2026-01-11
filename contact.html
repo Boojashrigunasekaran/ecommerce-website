@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footcap - Find your footware</title>
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload banner
+  -->
+  <link rel="preload" href="./assets/images/hero-banner.png" as="image">
+
+
+  <link rel="stylesheet" href="./style.css">
+  <style>
+
+    /* Contact Section */
+.contact-section {
+  background-color: #f8f8f8;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  background: #fff;
+  padding: 40px;
+  max-width: 700px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.contact-container h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #111;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.contact-container p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff6f61;
+  outline: none;
+}
+
+.btn-submit {
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #e65b51;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .contact-container {
+    padding: 25px;
+  }
+
+  .contact-container h2 {
+    font-size: 1.6rem;
+  }
+}
+
+    
+      .footer {
+        background: #111;
+        color: #eee;
+        padding: 60px 0 20px;
+      }
+      .footer .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+      }
+      .footer h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+      }
+      .footer-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 8px 0;
+        color: #bbb;
+        transition: color 0.3s;
+      }
+      .footer-link:hover {
+        color: #ff6f61;
+      }
+      .footer .social-list {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .footer .social-link {
+        font-size: 1.4rem;
+        transition: transform 0.3s;
+      }
+      .footer .social-link:hover {
+        transform: scale(1.2);
+        color: #ff6f61;
+      }
+      .footer-bottom {
+        text-align: center;
+        margin-top: 30px;
+        color: #999;
+        font-size: 0.9rem;
+      }
+      .footer-bottom a {
+        color: #ff6f61;
+      }
+  </style>
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <div class="overlay" data-overlay></div>
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.svg" width="160" height="50" alt="Footcap logo">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.svg" width="190" height="50" alt="Footcap logo">
+        </a>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link">Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="about.html" class="navbar-link">About</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="product.html" class="navbar-link">Products</a>
+          </li>
+          
+          <li class="navbar-item">
+            <a href="contact.html" class="navbar-link">Contact</a>
+          </li>
+
+        </ul>
+
+        <ul class="nav-action-list">
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Login / Register</span>
+            </a>
+          </li>
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Wishlist</span>
+
+              <data class="nav-action-badge" value="5" aria-hidden="true">5</data>
+            </button>
+          </li>
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="bag-outline" aria-hidden="true"></ion-icon>
+
+              <data class="nav-action-text" value="318.00">Basket: <strong>$318.00</strong></data>
+
+              <data class="nav-action-badge" value="4" aria-hidden="true">4</data>
+            </button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <section class="contact-section">
+  <div class="contact-container">
+    <h2>Get in Touch</h2>
+    <p>Have a question or feedback? We’d love to hear from you!</p>
+
+    <form class="contact-form" action="#" method="post">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+      <div class="container">
+        <div>
+          <h3>Our Information</h3>
+          <a href="#" class="footer-link"
+            ><ion-icon name="location-outline"></ion-icon> 123 Street, India</a
+          >
+          <a href="#" class="footer-link"
+            ><ion-icon name="call-outline"></ion-icon> +91 98765 43210</a
+          >
+          <a href="#" class="footer-link"
+            ><ion-icon name="mail-outline"></ion-icon> info@footcap.com</a
+          >
+          <div class="social-list">
+            <a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a>
+            <a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Account</h3>
+          <a href="#" class="footer-link">My Account</a>
+          <a href="#" class="footer-link">Orders</a>
+          <a href="#" class="footer-link">Wishlist</a>
+        </div>
+
+        <div>
+          <h3>Timings</h3>
+          <p>Mon - Fri: 9am - 6pm</p>
+          <p>Sat: 10am - 4pm</p>
+          <p>Sun: Closed</p>
+        </div>
+
+        <div>
+          <h3>Newsletter</h3>
+          <p>Subscribe to get special offers and updates</p>
+          <form>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              style="
+                padding: 8px;
+                width: 100%;
+                border: none;
+                border-radius: 5px;
+                margin-top: 10px;
+              "
+              required
+            />
+            <button
+              type="submit"
+              style="
+                margin-top: 10px;
+                padding: 8px 16px;
+                border: none;
+                background: #ff6f61;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2025 <a href="#">Footcap</a>. All Rights Reserved.
+      </div>
+    </footer>
+
+
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top-btn" data-go-top>
+    <ion-icon name="arrow-up-outline"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

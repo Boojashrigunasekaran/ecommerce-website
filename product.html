@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Footcap | Products</title>
+    
+    <link rel="stylesheet" href="./style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+      /* ======== GLOBAL STYLES ======== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+
+      body {
+        background: #f9f9f9;
+        color: #333;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ======== NAVBAR ======== */
+      header {
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .nav {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+      }
+
+      .nav .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #222;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links a {
+        color: #444;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #ff4b2b;
+      }
+
+      .search-box {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 20px;
+      }
+
+      .search-box input {
+        width: 60%;
+        padding: 8px 12px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        outline: none;
+        transition: width 0.4s ease;
+      }
+
+      .search-box input:focus {
+        width: 80%;
+        border-color: #ff4b2b;
+      }
+
+      .icons {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .icons ion-icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .footer {
+        background: #111;
+        color: #eee;
+        padding: 60px 0 20px;
+      }
+      .footer .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+      }
+      .footer h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+      }
+      .footer-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 8px 0;
+        color: #bbb;
+        transition: color 0.3s;
+      }
+      .footer-link:hover {
+        color: #ff6f61;
+      }
+      .footer .social-list {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .footer .social-link {
+        font-size: 1.4rem;
+        transition: transform 0.3s;
+      }
+      .footer .social-link:hover {
+        transform: scale(1.2);
+        color: #ff6f61;
+      }
+      .footer-bottom {
+        text-align: center;
+        margin-top: 30px;
+        color: #999;
+        font-size: 0.9rem;
+      }
+      .footer-bottom a {
+        color: #ff6f61;
+      }
+
+      @media (max-width: 768px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .search-box {
+          order: 3;
+          width: 100%;
+          margin-top: 10px;
+        }
+
+        .search-box input {
+          width: 90%;
+        }
+      }
+
+      /* ======== PRODUCT GRID ======== */
+      .product-section {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .product-section h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 30px;
+        font-family: "Josefin Sans", sans-serif;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .product-card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .product-card h3 {
+        margin: 15px 0 5px;
+        font-size: 1.1rem;
+      }
+
+      .product-card p {
+        color: #777;
+        font-size: 0.9rem;
+        padding: 0 10px;
+      }
+
+      .price {
+        color: #ff4b2b;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .buttons button {
+        background: #ff4b2b;
+        color: #fff;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .buttons button:hover {
+        background: #222;
+      }
+
+      /* ======== FOOTER ======== */
+      footer {
+        background: #222;
+        color: #fff;
+        padding: 50px 20px;
+        margin-top: 40px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .footer-container h3 {
+        margin-bottom: 15px;
+      }
+
+      .footer-container a {
+        display: block;
+        color: #bbb;
+        margin: 5px 0;
+      }
+
+      .footer-container a:hover {
+        color: #ff4b2b;
+      }
+
+      .newsletter input {
+        padding: 8px;
+        border: none;
+        border-radius: 20px;
+        width: 80%;
+        margin-bottom: 10px;
+      }
+
+      .newsletter button {
+        background: #ff4b2b;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .copyright {
+        text-align: center;
+        color: #aaa;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======== NAVBAR ======== -->
+    <header class="header" data-header>
+    <div class="container">
+
+      <div class="overlay" data-overlay></div>
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo.svg" width="160" height="50" alt="Footcap logo">
+      </a>
+
+      <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <a href="#" class="logo">
+          <img src="./assets/images/logo.svg" width="190" height="50" alt="Footcap logo">
+        </a>
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link">Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="about.html" class="navbar-link">About</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="product.html" class="navbar-link">Products</a>
+          </li>
+          
+          <li class="navbar-item">
+            <a href="contact.html" class="navbar-link">Contact</a>
+          </li>
+
+        </ul>
+
+        <ul class="nav-action-list">
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Search</span>
+            </button>
+          </li>
+
+          <li>
+            <a href="#" class="nav-action-btn">
+              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Login / Register</span>
+            </a>
+          </li>
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+
+              <span class="nav-action-text">Wishlist</span>
+
+              <data class="nav-action-badge" value="5" aria-hidden="true">5</data>
+            </button>
+          </li>
+
+          <li>
+            <button class="nav-action-btn">
+              <ion-icon name="bag-outline" aria-hidden="true"></ion-icon>
+
+              <data class="nav-action-text" value="318.00">Basket: <strong>$318.00</strong></data>
+
+              <data class="nav-action-badge" value="4" aria-hidden="true">4</data>
+            </button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+  </header>
+
+    <!-- ======== PRODUCTS ======== -->
+    <section class="product-section">
+      <h2>Our Latest Footwear Collection</h2>
+
+      <div class="product-grid">
+     <!-- Product 31 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/1266251063/photo/running-trail-run-in-early-sunrise.jpg?s=612x612&w=0&k=20&c=1L3Hv-i-P4om24-sAcmD5hC6vcVNwwgzUQlBcD7MrKo=" alt="SwiftMotion Trainers" />
+  <h3>SwiftMotion Trainers</h3>
+  <p>Engineered for speed and flexibility with a breathable mesh upper and shock-absorbing sole.</p>
+  <p class="price">$84.99</p>
+  <div class="buttons">
+    <button>Buy Now</button>
+    <button>Add to Cart</button>
+  </div>
+</div>
+
+<!-- Product 32 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/1809974602/photo/fitness-woman-ties-shoelaces-on-sneakers-and-get-ready-for-morning-running-and-sports-workout.jpg?s=612x612&w=0&k=20&c=OrEnA4c33gbXyWINS24RfOVf-VweK_OeUvvoJ_zsqVs=" alt="EcoStep Recycled Sneakers" />
+  <h3>EcoStep Recycled Sneakers</h3>
+  <p>Eco-friendly sneakers crafted from recycled materials, offering style and sustainability.</p>
+  <p class="price">$89.99</p>
+  <div class="buttons">
+    <button>Buy Now</button>
+    <button>Add to Cart</button>
+  </div>
+</div>
+
+
+        <!-- Product 1 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1726133812290-1fcc8a0658a4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fEFpckZsZXglMjBSdW5uaW5nJTIwU2hvZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="AirFlex Running Shoes" />
+  <h3>AirFlex Running Shoes</h3>
+  <p>Lightweight and breathable design ideal for daily runs and workouts.</p>
+  <p class="price">$79.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 2 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1563635419376-78d400e5588e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dHJhaWwlMjBtYXN0ZXIlMjBoaWtlciUyMGJvb3RzJTIwaW4lMjBwcm9mZXNzaW9uYWwlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="TrailMaster Hiker Boots" />
+  <h3>TrailMaster Hiker Boots</h3>
+  <p>Durable leather boots built for rough terrains and mountain trails.</p>
+  <p class="price">$99.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 3 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1552346154-7841f684d259?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=600" alt="UrbanStride Sneakers" />
+  <h3>UrbanStride Sneakers</h3>
+  <p>Trendy casual sneakers for everyday streetwear and comfort.</p>
+  <p class="price">$69.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 4 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/1036174880/photo/pair-of-classic-brown-leather-grooms-shoes-on-the-carpet-photographed-from-above-man-fashion.jpg?s=2048x2048&w=is&k=20&c=zqvX1wahRJ_Y2S4H2kKcTsPATfGQm9xvG0wZYXgfS0E=" alt="ComfiStep Loafers" />
+  <h3>ComfiStep Loafers</h3>
+  <p>Soft suede loafers designed for comfort and smart casual outfits.</p>
+  <p class="price">$64.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 5 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1713603577859-b6d39c908123?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8RWxpdGVDb3VydCUyMFNwb3J0cyUyMFNob2VzfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="EliteCourt Sports Shoes" />
+  <h3>EliteCourt Sports Shoes</h3>
+  <p>Performance-driven sports shoes for gym and active play.</p>
+  <p class="price">$89.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 6 -->
+<div class="product-card">
+  <img src="https://plus.unsplash.com/premium_photo-1673367751802-ed858d3950d2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=600" alt="Classic Leather Oxfords" />
+  <h3>Classic Leather Oxfords</h3>
+  <p>Premium leather formal shoes for professional and dress wear.</p>
+  <p class="price">$119.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 7 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/1172968130/photo/running-shoes-on-white-background-sports-shoes.webp?a=1&b=1&s=612x612&w=0&k=20&c=bEAyRoPEMA9qB54MvoOBgU9Fpj6nm7CJcrmwp_0ZgEo=" alt="AeroLite Trainers" />
+  <h3>AeroLite Trainers</h3>
+  <p>Ultra-light trainers for running and high-performance comfort.</p>
+  <p class="price">$74.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 8 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/1147865148/photo/elegant-gray-pair-of-shoes.webp?a=1&b=1&s=612x612&w=0&k=20&c=zI1kbnGyjjqNgjRX-A_kczJiQxIM_L0J5sjYyPl7Mlg=" alt="MetroFlex Casuals" />
+  <h3>MetroFlex Casuals</h3>
+  <p>Casual canvas shoes perfect for travel, weekends, and comfort.</p>
+  <p class="price">$59.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 9 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/810439662/photo/shoe-background.jpg?s=612x612&w=0&k=20&c=_Mrc8iOPJcWV21b6vMCip5AHrI09KWMELSfXZSDUdHU=" alt="PowerStep Slip-Ons" />
+  <h3>PowerStep Slip-Ons</h3>
+  <p>Easy-wear slip-ons combining flexibility and all-day comfort.</p>
+  <p class="price">$54.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 10 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/177406644/photo/running-shoes.webp?a=1&b=1&s=612x612&w=0&k=20&c=873-g3bry1ul2jCUfjtSl_UQmUqRbc2gqj0IQiCMwxg=" alt="StreetEdge High-Tops" />
+  <h3>StreetEdge High-Tops</h3>
+  <p>Bold and durable sneakers that make a statement on the streets.</p>
+  <p class="price">$84.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 11 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/172844766/photo/black-shoes.webp?a=1&b=1&s=612x612&w=0&k=20&c=uaRLwmt9FDbz6myqnWad6uvVvJG-BDNtM6zGBmaoj_I=" alt="AquaGrip Water Shoes" />
+  <h3>AquaGrip Water Shoes</h3>
+  <p>Quick-dry shoes ideal for beaches, swimming, and water sports.</p>
+  <p class="price">$49.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 12 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1683030260459-9b6b180bdf00?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8UHJpbWVSdW4lMjBNYXJhdGhvbiUyMFNob2VzfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="PrimeRun Marathon Shoes" />
+  <h3>PrimeRun Marathon Shoes</h3>
+  <p>High-endurance shoes designed for marathon runners and athletes.</p>
+  <p class="price">$109.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 13 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/530468325/photo/mens-classic-leather-brow-shoes.jpg?s=612x612&w=0&k=20&c=3GO3uPeAVsZD95NjpVRKuX4iL4tQVSSgt-sPMzugc14=" alt="Weekend Slip Loafers" />
+  <h3>Weekend Slip Loafers</h3>
+  <p>Elegant loafers made for weekends and casual outings.</p>
+  <p class="price">$69.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 14 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1700854088063-e558c33fe3cc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8UHJvQ291cnQlMjBCYXNrZXRiYWxsJTIwU2hvZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="ProCourt Basketball Shoes" />
+  <h3>ProCourt Basketball Shoes</h3>
+  <p>Enhanced ankle support and traction for powerful basketball play.</p>
+  <p class="price">$119.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 15 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1740430824310-fcc19817bfa6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=600" alt="SkyLine Runners" />
+  <h3>SkyLine Runners</h3>
+  <p>Responsive cushioning with modern design for everyday running.</p>
+  <p class="price">$89.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 16 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/1406694235/photo/womens-summer-sandals-on-an-abstract-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=9Cd-_uoYwl2a1W29p44dRNq4N-5reftH8SIS2WqKOnM=" alt="ComfiCloud Sandals" />
+  <h3>ComfiCloud Sandals</h3>
+  <p>Soft cushioned sandals designed for summer comfort and style.</p>
+  <p class="price">$44.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 17 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1698611028521-4c284ca88b11?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8VmludGFnZVN0cmVldCUyMFNuZWFrZXJzfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="VintageStreet Sneakers" />
+  <h3>VintageStreet Sneakers</h3>
+  <p>Retro-inspired sneakers with premium comfort and modern flair.</p>
+  <p class="price">$74.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 18 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/173801570/photo/comfortable-blue-shoes.webp?a=1&b=1&s=612x612&w=0&k=20&c=qG5lZzXH94_RKzkCAsoJQ5a0BkUWUXIkjGP7puVkcgE=" alt="AeroWalk Trainers" />
+  <h3>AeroWalk Trainers</h3>
+  <p>Perfect balance of air flow and grip for walking comfort.</p>
+  <p class="price">$69.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 19 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1687444334081-8ca04ed2a1a3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&q=60&w=600" alt="RapidRun Speed Shoes" />
+  <h3>RapidRun Speed Shoes</h3>
+  <p>Engineered for agility and speed during training sessions.</p>
+  <p class="price">$89.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 20 -->
+<div class="product-card">
+  <img src="https://plus.unsplash.com/premium_photo-1663133930276-8af7489ad6d3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEyfHx8ZW58MHx8fHx8&auto=format&fit=crop&q=60&w=600" alt="PeakClimb Outdoor Boots" />
+  <h3>PeakClimb Outdoor Boots</h3>
+  <p>Waterproof and rugged boots for extreme outdoor adventures.</p>
+  <p class="price">$129.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 21 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1625318880107-49baad6765fd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8RGFpbHlXZWFyJTIwc2FuZGFsc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600" alt="DailyWear Flats" />
+  <h3>DailyWear Flats</h3>
+  <p>Simple, elegant flats designed for comfort and everyday wear.</p>
+  <p class="price">$39.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 22 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1552346210-468fb42f5e5b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fFVyYmFuVHJhaWwlMjBTbmVha2Vyc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600" alt="UrbanTrail Sneakers" />
+  <h3>UrbanTrail Sneakers</h3>
+  <p>Stylish sneakers designed for modern urban lifestyle and comfort.</p>
+  <p class="price">$84.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 23 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/2150046427/photo/white-sneakers-with-suede-on-the-background-sports-shoes-sport-shoes-womens-fashion.webp?a=1&b=1&s=612x612&w=0&k=20&c=nKanuzqzFV48_mul57A6gonIASSXl3RiCIkpzDZzoyE=" alt="WaveRide Trainers" />
+  <h3>WaveRide Trainers</h3>
+  <p>Flexible sole trainers designed for balance and grip control.</p>
+  <p class="price">$72.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 24 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1616258372736-f5e5d5337d6e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8R2xvd1N0ZXAlMjBTbmVha2Vyc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600" alt="GlowStep Sneakers" />
+  <h3>GlowStep Sneakers</h3>
+  <p>Modern sneakers featuring glow-in-dark design elements.</p>
+  <p class="price">$79.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 25 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/1159415101/photo/red-fabric-shoes-isolated-on-white-backgrounds.webp?a=1&b=1&s=612x612&w=0&k=20&c=er_-FSyvJ3sDMLVHhhH5buEWZQZVajdSJiWrXFed0G8=" alt="FlexMax Runners" />
+  <h3>FlexMax Runners</h3>
+  <p>Dynamic running shoes built with adaptive sole technology.</p>
+  <p class="price">$94.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 26 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/1182815425/photo/pair-of-blue-shoes-isolated-on-wooden-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=Ru1UvFK_nBRHYtKlqu3GdaSYK2OUnd5IQv5TyoTVrMA=" alt="OceanBreeze Slides" />
+  <h3>OceanBreeze Slides</h3>
+  <p>Soft, water-resistant slides ideal for pool or beach days.</p>
+  <p class="price">$34.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 27 -->
+<div class="product-card">
+  <img src="https://images.unsplash.com/photo-1591629680644-38819225c7c1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Q2xvdWRTdGVwJTIwU25lYWtlcnN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="CloudStep Sneakers" />
+  <h3>CloudStep Sneakers</h3>
+  <p>Cushioned soles for comfort that feels like walking on clouds.</p>
+  <p class="price">$79.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 28 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/182443321/photo/trekking-boots-on-the-background-of-himalayas.webp?a=1&b=1&s=612x612&w=0&k=20&c=HA2Uf_IZj40B7f8A2kMAFWpSj9gLtTqtsvHqrtMT8ng=" alt="SummitTrail Hiking Shoes" />
+  <h3>SummitTrail Hiking Shoes</h3>
+  <p>Water-resistant hiking shoes with superior ankle support.</p>
+  <p class="price">$119.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 29 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/1313668701/photo/sports-shoe.webp?a=1&b=1&s=612x612&w=0&k=20&c=dBGZN_PJG0SCZZ3uJjBDAANiZaNNWmKC3vEhrZpIQ0Y=" alt="GripZone Cleats" />
+  <h3>GripZone Cleats</h3>
+  <p>Durable cleats built for traction on football and soccer fields.</p>
+  <p class="price">$99.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+<!-- Product 30 -->
+<div class="product-card">
+  <img src="https://media.istockphoto.com/id/647083700/photo/stylish-brown-leather-boots-for-men-isolated-on-white-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=WwVjZXVd23b4eL8-vP9ngl112TCodrTj6uMbrtM5VJk=" alt="LuxeForm Leather Boots" />
+  <h3>LuxeForm Leather Boots</h3>
+  <p>Elegant handcrafted leather boots for premium fashion lovers.</p>
+  <p class="price">$139.99</p>
+  <div class="buttons"><button>Buy Now</button><button>Add to Cart</button></div>
+</div>
+
+      </div>
+    </section>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+      <div class="container">
+        <div>
+          <h3>Our Information</h3>
+          <a href="#" class="footer-link"
+            ><ion-icon name="location-outline"></ion-icon> 123 Street, India</a
+          >
+          <a href="#" class="footer-link"
+            ><ion-icon name="call-outline"></ion-icon> +91 98765 43210</a
+          >
+          <a href="#" class="footer-link"
+            ><ion-icon name="mail-outline"></ion-icon> info@footcap.com</a
+          >
+          <div class="social-list">
+            <a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a>
+            <a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Account</h3>
+          <a href="#" class="footer-link">My Account</a>
+          <a href="#" class="footer-link">Orders</a>
+          <a href="#" class="footer-link">Wishlist</a>
+        </div>
+
+        <div>
+          <h3>Timings</h3>
+          <p>Mon - Fri: 9am - 6pm</p>
+          <p>Sat: 10am - 4pm</p>
+          <p>Sun: Closed</p>
+        </div>
+
+        <div>
+          <h3>Newsletter</h3>
+          <p>Subscribe to get special offers and updates</p>
+          <form>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              style="
+                padding: 8px;
+                width: 100%;
+                border: none;
+                border-radius: 5px;
+                margin-top: 10px;
+              "
+              required
+            />
+            <button
+              type="submit"
+              style="
+                margin-top: 10px;
+                padding: 8px 16px;
+                border: none;
+                background: #ff6f61;
+                color: #fff;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2025 <a href="#">Footcap</a>. All Rights Reserved.
+      </div>
+    </footer>
+
+    <!-- ---------------- GO TOP BUTTON ---------------- -->
+    <button class="go-top" data-go-top>
+      <ion-icon name="arrow-up-outline"></ion-icon>
+    </button>
+
+    <script>
+      // JS for future interactivity if needed
+      const searchInput = document.querySelector(".search-box input");
+      searchInput.addEventListener("input", (e) => {
+        const term = e.target.value.toLowerCase();
+        document.querySelectorAll(".product-card").forEach((card) => {
+          const name = card.querySelector("h3").textContent.toLowerCase();
+          card.style.display = name.includes(term) ? "block" : "none";
+        });
+      });
+    </script>
+  </body>
+</html>
